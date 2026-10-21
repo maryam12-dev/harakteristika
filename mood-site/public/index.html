@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jamoadagi rolingiz — Belbin testi</title>
+<style>
+:root{--bg:#f4f1ff;--bg2:#e6f4ff;--card:rgba(255,255,255,.74);--bd:rgba(120,100,200,.2);--tx:#241f3d;--mut:#6d6890;--ac:#7c5cff;--ac2:#22c3c3;--sh:0 10px 40px rgba(90,70,180,.12);--bot:rgba(124,92,255,.1);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#13112a;--bg2:#0d2231;--card:rgba(38,34,74,.64);--bd:rgba(160,140,255,.22);--tx:#efeaff;--mut:#a39fcb;--sh:0 10px 40px rgba(0,0,0,.35);--bot:rgba(160,140,255,.14)}}
+:root[data-theme="dark"]{--bg:#13112a;--bg2:#0d2231;--card:rgba(38,34,74,.64);--bd:rgba(160,140,255,.22);--tx:#efeaff;--mut:#a39fcb;--sh:0 10px 40px rgba(0,0,0,.35);--bot:rgba(160,140,255,.14)}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Segoe UI",system-ui,-apple-system,Roboto,sans-serif;color:var(--tx);background:var(--bg);min-height:100vh;background-image:radial-gradient(900px 500px at 8% -5%,rgba(124,92,255,.28),transparent 60%),radial-gradient(800px 500px at 100% 10%,rgba(34,195,195,.22),transparent 60%),linear-gradient(160deg,var(--bg),var(--bg2));background-attachment:fixed}
+.wrap{max-width:900px;margin:0 auto;padding:18px 16px 60px}
+header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.logo{font-weight:800;font-size:20px;display:flex;align-items:center;gap:10px}
+.logo i{font-style:normal;display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--ac),var(--ac2));color:#fff}
+button{font:inherit;color:inherit;cursor:pointer}
+.ghost{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:8px 12px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:24px;padding:22px;box-shadow:var(--sh);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);margin-bottom:16px}
+h1{font-size:clamp(28px,5.5vw,44px);line-height:1.1;margin:0 0 12px;letter-spacing:-1px}
+h1 span,.grad{background:linear-gradient(90deg,var(--ac),var(--ac2));-webkit-background-clip:text;background-clip:text;color:transparent}
+h2{margin:0 0 12px;font-size:18px}
+p{line-height:1.55;margin:0 0 12px}
+.mut{color:var(--mut)}
+.btn{background:linear-gradient(135deg,var(--ac),var(--ac2));color:#fff;border:0;border-radius:14px;padding:13px 24px;font-weight:700;font-size:16px}
+.btn:disabled{opacity:.5}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.chip{border:1px solid var(--bd);border-radius:20px;padding:5px 12px;font-size:13px;background:transparent}
+.bar{height:8px;border-radius:8px;background:var(--bd);overflow:hidden}
+.bar div{height:100%;background:linear-gradient(90deg,var(--ac),var(--ac2));transition:.4s}
+.q{font-size:clamp(20px,3.6vw,27px);font-weight:600;line-height:1.35;margin:26px 0 22px;min-height:100px}
+.scale{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.scale button{background:transparent;border:2px solid var(--bd);border-radius:16px;padding:16px 0;font-size:20px;font-weight:700;transition:.15s}
+.scale button:hover,.scale button.on{border-color:var(--ac);background:rgba(124,92,255,.16);transform:translateY(-2px)}
+.ends{display:flex;justify-content:space-between;font-size:12px;color:var(--mut);margin-top:8px}
+.nav{display:flex;justify-content:space-between;align-items:center;margin-top:16px;font-size:14px;color:var(--mut)}
+.top{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.top .em{font-size:56px}
+.badge{display:inline-block;font-size:12px;font-weight:700;padding:3px 10px;border-radius:20px;background:var(--bot);color:var(--ac);margin-bottom:6px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:700px){.cols{grid-template-columns:1fr}}
+.box{border:1px solid var(--bd);border-radius:16px;padding:14px}
+.box h3{margin:0 0 6px;font-size:14px;color:var(--mut);text-transform:uppercase;letter-spacing:.5px}
+.box p{margin:0;font-size:15px}
+.rowbar{display:grid;grid-template-columns:150px 1fr 40px;gap:10px;align-items:center;margin:8px 0;font-size:14px}
+@media(max-width:520px){.rowbar{grid-template-columns:110px 1fr 36px;font-size:13px}}
+svg text{fill:var(--mut);font-size:11px}
+.chat{display:flex;flex-direction:column;height:400px}
+.msgs{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding:4px 2px 10px}
+.m{max-width:85%;padding:10px 14px;border-radius:18px;line-height:1.45;white-space:pre-wrap;font-size:15px}
+.m.bot{background:var(--bot);border-bottom-left-radius:6px;align-self:flex-start}
+.m.me{background:var(--ac);color:#fff;border-bottom-right-radius:6px;align-self:flex-end}
+.row{display:flex;gap:8px}
+input[type=text]{width:100%;font:inherit;color:var(--tx);background:transparent;border:1px solid var(--bd);border-radius:14px;padding:11px 13px;outline:none}
+input[type=text]:focus{border-color:var(--ac)}
+.small{font-size:12px;color:var(--mut);margin-top:10px}
+.hide{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+ <div class="logo"><i>◎</i> Jamoa rollari</div>
+ <button class="ghost" id="theme" aria-label="Mavzu">🌗</button>
+</header>
+
+<section id="intro" class="card">
+ <h1>Jamoada siz <span>kimsiz?</span></h1>
+ <p>Belbin modeli jamoada odamlar 9 xil rolni o‘ynashini aytadi. 36 ta qisqa tasdiq bo‘yicha o‘zingizga qanchalik mos kelishini baholang. Natijada sizning asosiy rollaringiz, kuchli tomonlaringiz va rivojlanish yo‘nalishlaringiz chiqadi.</p>
+ <div class="chips"><span class="chip">⏱ ≈ 6 daqiqa</span><span class="chip">36 ta savol</span><span class="chip">🔒 Natija brauzeringizda</span></div>
+ <p class="mut" style="font-size:14px">Halol javob bering: “qanday bo‘lishim kerak” emas, “odatda qanday bo‘laman” deb o‘ylang. To‘g‘ri yoki noto‘g‘ri javob yo‘q.</p>
+ <button class="btn" id="start">Testni boshlash</button>
+ <div class="small">Bu mustaqil o‘z-o‘zini baholash vositasi, rasmiy Belbin Associates sertifikatli testi emas va tashxis qo‘ymaydi.</div>
+</section>
+
+<section id="quiz" class="card hide">
+ <div class="bar"><div id="pb" style="width:0"></div></div>
+ <div class="nav"><span id="pn">1 / 36</span><span>O‘zingizga qanchalik mos?</span></div>
+ <div class="q" id="qt"></div>
+ <div class="scale" id="sc"></div>
+ <div class="ends"><span>Umuman mos emas</span><span>To‘liq mos</span></div>
+ <div class="nav"><button class="ghost" id="back">← Orqaga</button><span></span></div>
+</section>
+
+<section id="result" class="hide">
+ <div class="card">
+  <span class="badge">SIZNING ASOSIY ROLINGIZ</span>
+  <div class="top"><div class="em" id="r1e"></div><div style="flex:1;min-width:220px"><h1 id="r1n" style="margin:0"></h1><div class="mut" id="r1s"></div></div></div>
+  <p id="r1d" style="margin-top:14px"></p>
+  <div class="cols">
+   <div class="box"><h3>💪 Kuchli tomonlar</h3><p id="r1st"></p></div>
+   <div class="box"><h3>⚠️ Ehtiyot bo‘ling</h3><p id="r1w"></p></div>
+  </div>
+ </div>
+ <div class="card">
+  <h2>Qo‘shimcha rollaringiz</h2>
+  <div class="cols" id="sec"></div>
+ </div>
+ <div class="card">
+  <h2>Rollar profili</h2>
+  <svg id="radar" viewBox="0 0 340 320" width="100%" style="max-width:420px;display:block;margin:0 auto" role="img" aria-label="Rollar radar diagrammasi"></svg>
+  <div id="bars" style="margin-top:10px"></div>
+ </div>
+ <div class="card">
+  <h2>Rol maslahatchisi bilan suhbat</h2>
+  <div class="chat">
+   <div class="msgs" id="msgs"></div>
+   <div class="chips" id="cc"></div>
+   <div class="row"><input type="text" id="inp" placeholder="Natijangiz haqida so‘rang…" autocomplete="off"><button class="btn" id="send">Yuborish</button></div>
+  </div>
+  <div class="small">AI maslahatchi psixolog o‘rnini bosmaydi; javoblari umumiy yo‘nalish uchun.</div>
+ </div>
+ <div class="row" style="flex-wrap:wrap;justify-content:center">
+  <button class="ghost" id="copy">📋 Natijani nusxalash</button>
+  <button class="ghost" id="again">↻ Qayta topshirish</button>
+ </div>
+</section>
+</div>
+
+<script>
+const ROLES={
+PL:{n:"Ideya generatori",en:"Plant",e:"💡",c:"#f2b84c",d:"Siz jamoaning ijodiy kuchisiz: noodatiy g‘oyalar tug‘diradi va murakkab muammolarga yangi yo‘l topasiz. Boshqalar ko‘rmagan imkoniyatni ko‘rasiz.",s:"Original fikrlash, ijodkorlik, murakkab muammolarni hal qilish, yangi yo‘nalish ochish.",w:"Tafsilotlarga e’tiborsiz bo‘lishingiz, tanqidga sezgir bo‘lishingiz va o‘z dunyosiga cho‘mib qolishingiz mumkin.",t:"G‘oyalaringizni ijrochi va tahlilchi hamkorlar bilan sinab ko‘ring."},
+RI:{n:"Aloqachi",en:"Resource Investigator",e:"🌐",c:"#4fb8f0",d:"Siz jamoaning tashqi dunyo bilan ko‘prigisiz: yangi aloqalar, ma’lumot va imkoniyatlarni topasiz. Odamlar bilan tez til topishasiz.",s:"Muloqot, tarmoq qurish, yangi imkoniyatlarni topish, ishtiyoq va ruhlantirish.",w:"Qiziqishingiz tez so‘nishi va va’dalarni oxirigacha yetkazmay qolish xavfi bor.",t:"Topilgan aloqalarni muntazam yozib boring va yakunlovchi hamkor bilan ishlang."},
+CO:{n:"Koordinator",en:"Co-ordinator",e:"🧭",c:"#7ed08a",d:"Siz jamoani maqsad atrofida birlashtirasiz: vazifalarni to‘g‘ri taqsimlaysiz, har kimning gapirishiga imkon berasiz va qarorlarni umumlashtirasiz.",s:"Yetakchilik, delegatsiya, tinglash, jamoa kuchlarini yo‘naltirish.",w:"Ishni boshqalarga ortiqcha topshirib yuborish yoki manipulyativ ko‘rinish xavfi bor.",t:"Delegatsiyada shaffof bo‘ling va o‘zingiz ham ish hajmidan ulush oling."},
+SH:{n:"Harakatlantiruvchi",en:"Shaper",e:"🔥",c:"#ef6b6b",d:"Siz jamoaning dvigatelisiz: tezlik va bosim yaratasiz, to‘siqlarni yengib o‘tasiz va natijaga intilasiz. Qiyin vaziyatlarda ham to‘xtamaysiz.",s:"Qat’iyat, shijoat, bosim ostida ishlash, qarorlarni tez qabul qilish.",w:"Sabrsizlik, keskin muomala va boshqalarni xafa qilib qo‘yish xavfi.",t:"Qat’iyligingizni hamkorlarga hurmat bilan uyg‘unlashtiring, jamoa o‘yinchisi sizga yordam beradi."},
+ME:{n:"Tahlilchi",en:"Monitor Evaluator",e:"🔍",c:"#9b7cf0",d:"Siz jamoaning sovuqqon aqlisiz: variantlarni xolis baholaysiz va xatarlarni oldindan ko‘rasiz. Qarorlaringiz o‘ylangan va ishonchli.",s:"Strategik fikrlash, xolislik, mantiqiy tahlil, to‘g‘ri baho berish.",w:"Haddan tashqari tanqidiylik, sekinlik va boshqalarni ilhomlantirishda qiynalish.",t:"Fikringizni kamchilik bilan emas, taklif bilan birga ayting."},
+TW:{n:"Jamoa o‘yinchisi",en:"Teamworker",e:"🤝",c:"#f08fb5",d:"Siz jamoaning yuragisiz: odamlar orasidagi muhitni uyg‘un tutasiz, kelishmovchilikni yumshatasiz va hammaga yordam berasiz.",s:"Tinglash, diplomatiya, hamkorlik, jamoa ruhini ko‘tarish.",w:"Qaror qabul qilishda ikkilanish va ziddiyatdan qochish.",t:"Muhim paytda o‘z fikringizni ochiq aytishni mashq qiling."},
+IM:{n:"Ijrochi",en:"Implementer",e:"🛠️",c:"#5fb3a1",d:"Siz g‘oyalarni ishlaydigan rejaga aylantirasiz: tartibli, intizomli va ishonchlisiz. Jamoa sizga tayanadi.",s:"Rejalashtirish, izchillik, mas’uliyat, amaliy tafakkur.",w:"O‘zgarishlarga sekin moslashish va qoliplardan chiqishda qiynalish.",t:"Yangi yondashuvlarga ochiq bo‘ling va ularni kichik tajriba sifatida sinab ko‘ring."},
+CF:{n:"Yakunlovchi",en:"Completer Finisher",e:"✅",c:"#c9a24a",d:"Siz sifat qo‘riqchisisiz: xatolarni topasiz, tafsilotlarga e’tibor berasiz va ishni muddatida mukammal topshirasiz.",s:"Aniqlik, sifat nazorati, mas’uliyat, muddatga rioya qilish.",w:"Haddan tashqari xavotir, mukammallikka berilib ketish va topshirishni kechiktirish.",t:"“Yetarlicha yaxshi” chegarasini oldindan belgilab oling."},
+SP:{n:"Mutaxassis",en:"Specialist",e:"🎓",c:"#6c8cff",d:"Siz jamoaning bilim manbaisiz: tor sohada chuqur ekspertizaga egasiz va shu sohada ishonchli maslahat bera olasiz.",s:"Chuqur bilim, ekspertiza, o‘z sohasiga bag‘ishlanganlik.",w:"Tor doiraga qamalib qolish va sohasidan tashqari masalalarga qiziqmaslik.",t:"Bilimingizni oddiy tilda tushuntirishni mashq qiling, shunda ta’siringiz oshadi."}};
+const KEYS=Object.keys(ROLES);
+const Q=[
+["PL","Muammoga kutilmagan, noodatiy yechimlar topishni yaxshi ko‘raman."],
+["PL","Odatiy usullar ishlamasa, yangi g‘oyalar o‘ylab topib jamoaga taklif qilaman."],
+["PL","Yolg‘iz o‘tirib mustaqil o‘ylaganimda eng yaxshi g‘oyalarim tug‘iladi."],
+["PL","Boshqalar e’tibor bermagan imkoniyatlarni ko‘ra olaman."],
+["RI","Yangi odamlar bilan tez til topishib, aloqalar o‘rnataman."],
+["RI","Loyihaga foydali bo‘ladigan odam, ma’lumot yoki resursni topishni bilaman."],
+["RI","Tashqaridagi yangiliklar va tendensiyalarni jamoaga olib kelaman."],
+["RI","Yangi imkoniyat paydo bo‘lsa, birinchi bo‘lib borib ko‘rishga tayyorman."],
+["CO","Muhokamada hammaning gapirishiga imkon berib, fikrlarni umumlashtiraman."],
+["CO","Vazifalarni odamlarning kuchli tomonlariga qarab taqsimlashni bilaman."],
+["CO","Jamoa maqsadini aniq ifodalab, hammani shu yo‘lga yo‘naltiraman."],
+["CO","Boshqalar meni tabiiy yetakchi sifatida ko‘rishadi."],
+["SH","Ish sekinlashsa, jamoani tezlashtirish uchun bosim o‘tkazishdan tortinmayman."],
+["SH","Qiyinchilik va to‘siqlar meni ruhlantiradi."],
+["SH","Natija uchun noqulay qaror qabul qilishga ham tayyorman."],
+["SH","Maqsadga erishish uchun jamoani doim turtki berib turaman."],
+["ME","Qaror qabul qilishdan oldin barcha variantlarni sovuqqonlik bilan taqqoslayman."],
+["ME","Boshqalar ilhomlanganda ham taklifning zaif tomonlarini ko‘ra olaman."],
+["ME","Shoshilmayman: to‘g‘ri qarorga kelish uchun vaqt olishni afzal ko‘raman."],
+["ME","Fikrlarimni his-tuyg‘uga emas, faktlarga tayanib quraman."],
+["TW","Jamoadagi kelishmovchilikni yumshatishga harakat qilaman."],
+["TW","Boshqalarni tinglayman va kayfiyatini tez sezaman."],
+["TW","Kimdir qiyinchilikda bo‘lsa, o‘z ishimni to‘xtatib yordam beraman."],
+["TW","Jamoada samimiy va do‘stona muhit men uchun juda muhim."],
+["IM","G‘oyani aniq reja va amaliy qadamlarga aylantirishni yaxshi ko‘raman."],
+["IM","Tartib, qoida va jadvalga amal qilaman."],
+["IM","Mas’uliyatni olsam, vazifani izchil va tizimli bajaraman."],
+["IM","Uzoq muhokamadan ko‘ra ishni amalda boshlashni afzal ko‘raman."],
+["CF","Topshirishdan oldin ishni xatolar uchun qayta-qayta tekshiraman."],
+["CF","Muddatga rioya qilish men uchun juda muhim."],
+["CF","Ish sifati mukammal bo‘lmaguncha ko‘nglim joyiga tushmaydi."],
+["CF","Boshqalar e’tibor bermagan mayda tafsilotlarni sezaman."],
+["SP","Bir sohada chuqur bilim to‘plashga ko‘p vaqt va kuch sarflayman."],
+["SP","Jamoada meni asosan maxsus bilim va tajribam uchun qadrlashadi."],
+["SP","O‘z sohamdagi yangiliklarni doim kuzatib boraman."],
+["SP","Qiziqqan mavzuimga sho‘ng‘ib, u haqida juda ko‘p narsa bilishni xohlayman."]];
+const $=id=>document.getElementById(id);
+let S={theme:null,res:null};
+try{const r=localStorage.getItem("belbin-v1");if(r)S=Object.assign(S,JSON.parse(r));}catch(e){}
+const save=()=>{try{localStorage.setItem("belbin-v1",JSON.stringify(S));}catch(e){}};
+if(S.theme)document.documentElement.setAttribute("data-theme",S.theme);
+$("theme").onclick=()=>{const d=document.documentElement.getAttribute("data-theme")==="dark"||(!S.theme&&matchMedia("(prefers-color-scheme:dark)").matches);S.theme=d?"light":"dark";document.documentElement.setAttribute("data-theme",S.theme);save();};
+function show(id){["intro","quiz","result"].forEach(x=>$(x).classList.toggle("hide",x!==id));window.scrollTo({top:0,behavior:"smooth"});}
+
+let order=[],ans=[],idx=0;
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+$("start").onclick=()=>{order=shuffle(Q.map((_,i)=>i));ans=[];idx=0;show("quiz");renderQ();};
+function renderQ(){
+ $("pn").textContent=(idx+1)+" / "+Q.length;
+ $("pb").style.width=(idx/Q.length*100)+"%";
+ $("qt").textContent=Q[order[idx]][1];
+ const sc=$("sc");sc.innerHTML="";
+ for(let v=1;v<=5;v++){const b=document.createElement("button");b.textContent=v;if(ans[idx]===v)b.className="on";b.onclick=()=>pick(v);sc.appendChild(b);}
+ $("back").style.visibility=idx?"visible":"hidden";
+}
+function pick(v){
+ ans[idx]=v;
+ [...$("sc").children].forEach((b,i)=>b.classList.toggle("on",i+1===v));
+ setTimeout(()=>{if(idx<Q.length-1){idx++;renderQ();}else finish();},160);
+}
+$("back").onclick=()=>{if(idx>0){idx--;renderQ();}};
+document.addEventListener("keydown",e=>{if(!$("quiz").classList.contains("hide")&&/^[1-5]$/.test(e.key))pick(+e.key);});
+function finish(){
+ const sum={};KEYS.forEach(k=>sum[k]=0);
+ ans.forEach((v,i)=>{sum[Q[order[i]][0]]+=v;});
+ const pct={};KEYS.forEach(k=>pct[k]=Math.round((sum[k]-4)/16*100));
+ S.res={pct,date:Date.now()};save();showResult();
+}
+function ranked(){return KEYS.slice().sort((a,b)=>S.res.pct[b]-S.res.pct[a]);}
+function showResult(){
+ const r=ranked(),p=S.res.pct,t=ROLES[r[0]];
+ $("r1e").textContent=t.e;$("r1n").textContent=t.n;$("r1s").textContent=t.en+" · moslik "+p[r[0]]+"%";
+ $("r1d").textContent=t.d;$("r1st").textContent=t.s;$("r1w").textContent=t.w+" Maslahat: "+t.t;
+ const sec=$("sec");sec.innerHTML="";
+ [r[1],r[2]].forEach((k,i)=>{const o=ROLES[k],d=document.createElement("div");d.className="box";
+  d.innerHTML='<h3></h3><p></p>';d.children[0].textContent=o.e+" "+(i+2)+"-rol: "+o.n+" ("+p[k]+"%)";d.children[1].textContent=o.d;sec.appendChild(d);});
+ drawRadar(p);
+ const bars=$("bars");bars.innerHTML="";
+ r.forEach(k=>{const o=ROLES[k],d=document.createElement("div");d.className="rowbar";
+  d.innerHTML='<span></span><div class="bar"><div></div></div><b></b>';
+  d.children[0].textContent=o.e+" "+o.n;d.children[1].firstChild.style.width=p[k]+"%";d.children[1].firstChild.style.background=o.c;d.children[2].textContent=p[k]+"%";bars.appendChild(d);});
+ initChat();show("result");
+}
+function drawRadar(p){
+ const cx=170,cy=160,R=100,n=KEYS.length;let s="";
+ [25,50,75,100].forEach(l=>{const pts=KEYS.map((_,i)=>{const a=-Math.PI/2+i*2*Math.PI/n;return (cx+Math.cos(a)*R*l/100).toFixed(1)+","+(cy+Math.sin(a)*R*l/100).toFixed(1);}).join(" ");s+='<polygon points="'+pts+'" fill="none" stroke="currentColor" opacity=".14"/>';});
+ const poly=[];
+ KEYS.forEach((k,i)=>{const a=-Math.PI/2+i*2*Math.PI/n,x=cx+Math.cos(a)*R,y=cy+Math.sin(a)*R;
+  s+='<line x1="'+cx+'" y1="'+cy+'" x2="'+x.toFixed(1)+'" y2="'+y.toFixed(1)+'" stroke="currentColor" opacity=".14"/>';
+  const lx=cx+Math.cos(a)*(R+24),ly=cy+Math.sin(a)*(R+24);
+  s+='<text x="'+lx.toFixed(1)+'" y="'+(ly+5).toFixed(1)+'" text-anchor="middle" style="font-size:18px">'+ROLES[k].e+'</text>';
+  poly.push((cx+Math.cos(a)*R*p[k]/100).toFixed(1)+","+(cy+Math.sin(a)*R*p[k]/100).toFixed(1));});
+ s+='<polygon points="'+poly.join(" ")+'" fill="#7c5cff" fill-opacity=".28" stroke="#7c5cff" stroke-width="2.5" stroke-linejoin="round"/>';
+ poly.forEach(q=>{const[x,y]=q.split(",");s+='<circle cx="'+x+'" cy="'+y+'" r="4" fill="#22c3c3"/>';});
+ $("radar").innerHTML=s;
+}
+$("again").onclick=()=>{S.res=null;save();show("intro");};
+$("copy").onclick=async()=>{
+ const r=ranked(),p=S.res.pct;
+ const txt="Belbin jamoa rollari natijam:\n"+r.slice(0,3).map((k,i)=>(i+1)+". "+ROLES[k].n+" — "+p[k]+"%").join("\n");
+ try{await navigator.clipboard.writeText(txt);$("copy").textContent="✓ Nusxalandi";}catch(e){$("copy").textContent="Nusxalab bo‘lmadi";}
+ setTimeout(()=>$("copy").textContent="📋 Natijani nusxalash",1800);
+};
+
+/* ---------- AI maslahatchi ---------- */
+const msgs=$("msgs"),hist=[];let busy=false,chatInit=false;
+function add(role,text){const d=document.createElement("div");d.className="m "+(role==="user"?"me":"bot");d.textContent=text;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;return d;}
+function initChat(){
+ if(chatInit)return;chatInit=true;
+ add("bot","Salom! Natijangizni ko‘rdim. Rollaringiz haqida, jamoada qanday ishlash yoki rivojlanish yo‘llari haqida so‘rashingiz mumkin.");
+ ["Jamoada qanday ishlasam yaxshi?","Qaysi rollar menga mos hamkor?","Zaif tomonlarimni qanday rivojlantiray?","Qaysi kasblar mos keladi?"].forEach(t=>{const b=document.createElement("button");b.className="chip";b.textContent=t;b.onclick=()=>ask(t);$("cc").appendChild(b);});
+}
+async function ask(text){
+ text=(text||"").trim().slice(0,1000);if(!text||busy)return;
+ add("user",text);$("inp").value="";busy=true;$("send").disabled=true;
+ hist.push({role:"user",content:text});
+ const el=add("bot","…");
+ try{
+  const res=await fetch("/api/chat",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({messages:hist.slice(-10),scores:S.res.pct})});
+  const data=await res.json();
+  if(!res.ok)throw new Error(data.error||"xato");
+  el.textContent=data.reply;hist.push({role:"assistant",content:data.reply});
+ }catch(e){el.textContent="Javob olib bo‘lmadi. Birozdan keyin qayta urinib ko‘ring.";hist.pop();}
+ busy=false;$("send").disabled=false;
+}
+$("send").onclick=()=>ask($("inp").value);
+$("inp").addEventListener("keydown",e=>{if(e.key==="Enter")ask($("inp").value);});
+
+if(S.res&&S.res.pct)showResult();
+</script>
+</body>
+</html>
